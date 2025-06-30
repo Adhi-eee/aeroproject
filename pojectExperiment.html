@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       @font-face {
+        font-family: rubik;
+        src: url(Rubik/Rubik-VariableFont_wght.ttf);
+       }
+      body{
+        overflow-y: auto;
+        display: flex;
+        margin: 0px;
+        height: 100vh;
+        justify-content:center;
+        align-items: center;
+        background-color:  rgb(24, 24, 39);
+        font-family: rubik;
+        color: aliceblue;
+        position: relative;
+      }
+      .outer{
+        width: 70vw;
+        height: 70vh;
+        background-color:    rgb(24, 24, 39); 
+        display: flex;
+        gap: 2vw;
+        transform: translate(10px);
+
+      }
+      .left{
+         background-color:  rgb(22, 25, 74);
+        height: 70vh;
+        width:550px;
+        border-radius: 15px;
+        position: relative;
+        
+      }
+      .right{
+        background-color:   rgb(24, 24, 39);
+        width: 100%;
+        height: 70vh;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content:stretch;
+       box-sizing: border-box;
+       align-items: center;
+       gap: 3vh;
+      }
+      .task{
+        background-color: blue;
+        box-sizing: border-box;
+        width: 450px;
+        height: 47.9%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        position: relative;
+      
+      }
+      .inside{
+        position: absolute;
+        width: 100%;
+        display: flex;
+        height: 80%;
+        background-color:  rgb(22, 25, 74);
+        border-radius: 15px;
+        top: 20%;
+        text-align: left;
+       
+      }
+      .name{
+        font-family: rubik;
+        font-weight: 300 400 500;
+        font-size: 2rem;
+        color: aliceblue;
+        position: absolute;
+        top: 15%;
+        left: 15%;
+      }
+      #work{
+        background-color:  hsl(15, 100%, 70%);
+         display: flex;
+        flex-direction: column;
+      }
+      #play{
+      background-color: hsl(195, 74%, 62%);
+       display: flex;
+        flex-direction: column;
+      
+      
+      }
+      #study{
+      background-color: hsl(348, 100%, 68%);
+       display: flex;
+        flex-direction: column;
+      }
+      #exercise{
+      background-color: hsl(145, 58%, 55%);
+       display: flex;
+        flex-direction: column;
+      }
+      #social{
+      background-color: hsl(264, 64%, 52%);
+       display: flex;
+        flex-direction: column;
+      }
+      #selfcare{
+      background-color: hsl(60, 70%, 66%);
+       display: flex;
+        flex-direction: column;
+      }
+      .large{
+        position: absolute;
+        height: 70%;
+        background-color: rgb(89, 76, 255);
+        width: 100%;
+        border-radius: 10px;
+      }
+      .pic {
+       align-self: flex-end;
+       width: 8rem;
+      height: auto;
+      padding: 10px;
+     }
+      .dot{
+        position: absolute;
+        top: 19%;
+        left: 80%;
+        width: 2rem;
+        cursor: pointer;
+      }
+      .photo{
+        width: 28%;
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        border-radius: 50%;
+        border: solid 5px white;
+        
+      }
+      .report{
+         position: absolute;
+         font-size: 25px;
+         color: aliceblue;
+         top: 38%;
+         left: 15%;
+         opacity: 50%;
+      }
+      .person{
+        width: 50px;
+       
+        font-size: 70px;
+        color: aliceblue;
+        font-family: rubik;
+        position: absolute;
+        top: 45%;
+        left: 15%;
+      }
+      .day{
+        color: aliceblue;
+        z-index: 1;
+        font-size: 2rem;
+        opacity: 30%;
+        position: absolute;
+        top: 75%;
+        left: 10%;
+         cursor: pointer;
+      
+      }
+      .week{
+        color: aliceblue;
+        z-index: 1;
+        font-size: 2rem;
+        position: absolute;
+        top: 82.5%;
+        left: 10%;
+        cursor: pointer;
+        opacity: 30%;
+         
+      }
+      .month{
+         color: aliceblue;
+        font-size: 2rem;
+        opacity: 30%;
+        position: absolute;
+        top: 90%;
+        left: 10%;
+        cursor: pointer;
+      }
+      .time{
+        position: absolute;
+
+        top: 40%;
+        left: 10%;
+        font-size: 70px;
+
+         
+      }
+      .last{
+        position: absolute;
+        font-size: 30px;
+        top: 80%;
+        left: 40%;
+        opacity: 70%;
+      }
+      .bright{
+        opacity: 100%;
+      }
+      .inside:hover{
+         background-color: rgb(89, 76, 255);
+      }
+      
+      .bar{
+        position: absolute;
+        width: 60%;
+        height: 10%;
+        border-radius: 15px;
+        top: 10%;
+        box-shadow: 2px 2px 5px red,-2px -2px 5px blue;
+        
+      }
+      .progress{
+        position: absolute;
+        width: 20%;
+        height: 100%;
+        border-radius: 15px;
+        background-color: rgb(237, 222, 18);
+        
+        
+      }
+      .goal{
+        position: absolute;
+        font-size: 30px;
+        top: 70%;
+        left: 40%;
+        opacity: 70%;
+      }
+      .amount{
+        z-index: 1;
+        position: absolute;
+        top: 25%;
+        left: 60%;
+        width: 20%;
+        height: 10%;
+        font-size: 30px;
+        display: none;
+        background-color: black;
+        color: aliceblue;
+      }
+      .add{
+        z-index: 1;
+        font-size: 2rem;
+        opacity: 30%;
+        position: absolute;
+         top: 24.9%;
+        left: 81%;
+        height: 12%;
+         cursor: pointer;
+         display: none;
+      }
+      .visible{
+        display: block;
+      }
+      .green{
+        background-color: green;
+      }
+      .progress0{
+        width: 80%;
+      }
+      .progress1{
+        width: 83%;
+      }
+      .progress2{
+        width: 50%;
+      }
+      .progress3{
+        width: 66%;
+      }
+      .progress4{
+        width: 50%;
+      }
+      .progress5{
+        width: 33%;
+      }
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    @media (max-width: 1200px) {
+      body{
+        height: auto;
+        width: 100vm;
+      }
+  .outer {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    transform: translate(0);
+  }
+
+  .left {
+    width: 90%;
+    height: 300px;
+    align-self: center;
+  }
+  .large{
+    height: 50%;
+    position: absolute;
+    display: flex;
+    justify-self: start;
+    
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap; 
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    gap: 20px;
+  }
+
+  .task {
+    width: 90% !important;    height: auto !important;
+    flex: none;           
+  }
+
+  .inside {
+    position: relative;
+    top: 0;
+    height: 150px;
+  }
+
+  .name {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+  }
+
+  .pic {
+    width: 40px;
+    padding: 10px;
+  }
+
+  .dot {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: auto;
+    cursor: pointer;
+
+  }
+  .photo{
+    position: absolute;
+    width: 80px;
+    top: 30px;
+    left: 25px;
+  }
+  .report{
+    position: absolute;
+    top: 30px;
+    left: 130px;
+  }
+  .person{
+    width: auto;
+    font-size: 180%;
+    position: absolute;
+    top: 70px;
+    left: 130px;
+  }
+  .day{
+    position: absolute;
+    top:70%;
+    left: 5%;
+    text-align: center;
+  }
+  .week{
+    position: absolute;
+    top:70%;
+    text-align: center;
+    left: 40%;
+  }
+  .month{
+   position: absolute;
+    top:70%;
+    left:75%;
+    text-align: center;
+  }
+  .time{
+     
+  left: 5%;
+    
+  }
+  .last{
+    position: absolute;
+    top: 60%;
+    font-size: 20px;
+    left: 60%;
+  }
+  .goal{
+     
+    position: absolute;
+    top: 40%;
+    font-size: 20px;
+    left: 60%;
+  
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="left"> 
+        <div class="large">
+          <img src="imagesproject/image-jeremy.png" class="photo">
+          <div class="report">Report for</div>
+          <div class="person">Jeremy Robson</div>
+        </div>
+        <div class="day " onclick="change('daycall')">Daily</div>
+        <div class="week bright" onclick="change('weekcall')">Weekly</div>
+        <div class="month " onclick="change('monthcall')">Monthly</div>
+      </div>
+      <div class="right">
+        <div class="task" id="work">
+          <div class="bar">
+            <div class="progress progress0"></div>
+          </div>
+          <img src="imagesproject/icon-work.svg " class="pic">
+          <div class="inside">
+             <input class="amount amt0"> 
+             <button class="add add0" onclick="done(0)">+</button>
+             <img src="imagesproject/icon-ellipsis.svg" class="dot dot0" onclick="show(0)">
+            <div class="name">Work</div>
+             <div class="time worktime0">32hrs</div>
+             <div class="last last0">last Week-36hrs</div>
+             <div class="goal target0">Target-40</div>
+          </div>
+        </div>
+        <div class="task" id="play">
+           <div class="bar">
+            <div class="progress progress1"></div>
+            <span class="percentage">5%</span>
+          </div>
+        <img src="imagesproject/icon-play.svg "class="pic">
+          <div class="inside">
+            <input class="amount amt1"> 
+             <button class="add add1" onclick="done(1)">+</button>
+            <img src="imagesproject/icon-ellipsis.svg" class="dot dot1" onclick="show(1)">
+            <div class="name">Play</div>
+             <div class="time worktime1">10hrs</div>
+             <div class="last last1">last Week-8hrs</div>
+             <div class="goal target1">Target-12</div>
+          </div>
+        </div>
+        <div class="task" id="study">
+           <div class="bar">
+            <div class="progress progress2"></div>
+          </div>
+        <img src="imagesproject/icon-study.svg "class="pic">
+          <div class="inside">
+             <input class="amount amt2"> 
+             <button class="add add2" onclick="done(2)">+</button>
+             <img src="imagesproject/icon-ellipsis.svg" class="dot dot2 " onclick="show(2)">
+            <div class="name">Study</div>
+            <div class="time worktime2">4hrs</div>
+            <div class="last last2">last Week-7hrs</div>
+            <div class="goal target2">Target-8</div>
+          </div>
+        </div>
+        <div class="task" id="exercise">
+           <div class="bar">
+            <div class="progress progress3"></div>
+          </div>
+        <img src="imagesproject/icon-exercise.svg "class="pic">
+          <div class="inside">
+             <input class="amount amt3"> 
+             <button class="add add3" onclick="done(3)">+</button>
+             <img src="imagesproject/icon-ellipsis.svg" class="dot dot3" onclick="show(3)">
+            <div class="name">Exercise</div>
+             <div class="time worktime3">4hrs</div>
+             <div class="last last3">last Week-5hrs</div>
+               <div class="goal target3">Target-6</div>
+          </div>
+        </div>
+        <div class="task" id="social">
+           <div class="bar">
+            <div class="progress progress4"></div>
+          </div>
+          <img src="imagesproject/icon-social.svg" class="pic">
+          <div class="inside">
+              <input class="amount amt4"> 
+             <button class="add add4" onclick="done(4)">+</button>
+             <img src="imagesproject/icon-ellipsis.svg" class="dot dot4" onclick="show(4)">
+            <div class="name">Social</div>
+             <div class="time worktime4">5hrs</div>
+             <div class="last last4">last Week-10hrs</div>
+               <div class="goal target4">Target-10</div>
+          </div>
+        </div>
+        <div class="task" id="selfcare">
+           <div class="bar">
+            <div class="progress progress5"></div>
+          </div>
+          <img src="imagesproject/icon-self-care.svg" class="pic">
+          <div class="inside">
+                <input class="amount amt5"> 
+             <button class="add add5" onclick="done(5)">+</button>
+             <img src="imagesproject/icon-ellipsis.svg" class="dot dot5" onclick="show(5)">
+            <div class="name">Self Care</div>
+             <div class="time worktime5">2hrs</div>
+             <div class="last last5">last Week-4hrs</div>
+               <div class="goal target5">Target-6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      let day = [2,3,2,1,1,0.5];
+      let week = [32,10,4,4,5,2];
+      let month = [78,32,25,34,19,18];
+      const lastday = [3,4,2,1,4,5];
+      const lastweek = [36,8,7,5,10,2];
+      const lastmonth = [70,42,34,21,18,16];
+      const targetday = [3,3,2,3,2,2];
+      const targetweek = [40,12,8,6,10,6];
+      const targetmonth = [85,40,30,42,30,22];
+      let dayy='true';
+      let weekk = 'true';
+      let monthh = 'true';
+      let status = 'week';
+      
+      let check = {
+     0: 'true',
+     1: 'true',
+     2: 'true',
+     3: 'true',
+     4: 'true',
+     5: 'true'
+};
+  function done(n)// matte oro add num njan oro return idum:)
+  {
+    let k = document.querySelector(`.amt${n}`).value;
+    document.querySelector(`.amt${n}`).value = '';
+   let p;
+     if(status == 'day')
+  {
+    day[n] = day[n]+Number(k);
+    document.querySelector(`.worktime${n}`).innerText = `${day[n]}hrs`
+    p = ((day[n]/targetday[n])*100);
+    if(p<100)
+       {
+       document.querySelector(`.progress${n}`).style.width = `${p}%`;
+       document.querySelector(`.progress${n}`).classList.remove("green");
+       }
+       else{
+        document.querySelector(`.progress${n}`).classList.add("green");
+        document.querySelector(`.progress${n}`).style.width = `100%`;
+       }
+    
+  }
+     if(status == 'week')
+  {
+    week[n] = week[n]+Number(k);
+    document.querySelector(`.worktime${n}`).innerText = `${week[n]}hrs`
+    p = ((week[n]/targetweek[n])*100);
+    if(p<100)
+       {
+       document.querySelector(`.progress${n}`).style.width = `${p}%`;
+       document.querySelector(`.progress${n}`).classList.remove("green");
+       }
+       else{
+        document.querySelector(`.progress${n}`).classList.add("green");
+        document.querySelector(`.progress${n}`).style.width = `100%`;
+       }
+  }
+   if(status == 'month')
+  {
+    month[n] = month[n]+Number(k);
+    document.querySelector(`.worktime${n}`).innerText = `${month[n]}hrs`
+    p = ((month[n]/targetmonth[n])*100);
+    if(p<100)
+       {
+       document.querySelector(`.progress${n}`).style.width = `${p}%`;
+       document.querySelector(`.progress${n}`).classList.remove("green");
+       }
+       else{
+        document.querySelector(`.progress${n}`).classList.add("green");
+        document.querySelector(`.progress${n}`).style.width = `100%`;
+       }
+  }
+  document.querySelector(`.amt${n}`).classList.remove('visible');
+  document.querySelector(`.add${n}`).classList.remove('visible');
+  check[n] = 'true'
+  }
+function show(n){
+  if(check[n] == 'true'){
+    document.querySelector(`.amt${n}`).classList.add('visible');
+     document.querySelector(`.add${n}`).classList.add('visible');
+     check[n] = 'false'
+  }
+  else if(check[n]== 'false'){
+     document.querySelector(`.amt${n}`).classList.remove('visible');
+     document.querySelector(`.add${n}`).classList.remove('visible');
+     check[n] = 'true'
+  }
+}
+
+      
+      function change(call)
+      {
+        let v;
+        if(call=='daycall')
+      {
+      for(let i=0;i<=5;i++)
+      {
+      document.querySelector(`.worktime${i}`).innerText = `${day[i]}hrs`;
+      document.querySelector(`.last${i}`).innerText = `Last day-${lastday[i]}hrs`
+       document.querySelector(`.target${i}`).innerText = `Target - ${targetday[i]}hrs`;
+       v = (day[i]/targetday[i])*100;
+       if(v<100)
+       {
+       document.querySelector(`.progress${i}`).style.width = `${v}%`;
+       document.querySelector(`.progress${i}`).classList.remove("green");
+       }
+       else{
+        document.querySelector(`.progress${i}`).classList.add("green");
+        document.querySelector(`.progress${i}`).style.width = `100%`;
+       }
+      }
+      document.querySelector('.day').classList.add('bright');
+      document.querySelector('.week').classList.remove('bright');
+      document.querySelector('.month').classList.remove('bright');
+     
+      status = 'day';
+      }
+      
+
+      
+
+        if(call=='weekcall')
+      {
+      for(let i=0;i<=5;i++)
+      {
+      document.querySelector(`.worktime${i}`).innerText = `${week[i]}hrs`;
+       document.querySelector(`.last${i}`).innerText = `Last week-${lastweek[i]}hrs`;
+       document.querySelector(`.target${i}`).innerText = `Target - ${targetweek[i]}hrs`;
+       v = (week[i]/targetweek[i])*100;
+       if(v<100)
+       {
+       document.querySelector(`.progress${i}`).style.width = `${v}%`;
+       document.querySelector(`.progress${i}`).classList.remove("green");
+       }
+       else{
+        document.querySelector(`.progress${i}`).classList.add("green");
+        document.querySelector(`.progress${i}`).style.width = `100%`;
+       }
+
+      }
+
+       document.querySelector('.day').classList.remove('bright');
+      document.querySelector('.week').classList.add('bright');
+      document.querySelector('.month').classList.remove('bright');
+      status = 'week';
+    }
+       if(call=='monthcall')
+      {
+      for(let i=0;i<=5;i++)
+      {
+      document.querySelector(`.worktime${i}`).innerText = `${month[i]}hrs`;
+       document.querySelector(`.last${i}`).innerText = `Last month-${lastmonth[i]}hrs`;
+       document.querySelector(`.target${i}`).innerText = `Target - ${targetmonth[i]}hrs`;
+       v = (month[i]/targetmonth[i])*100;
+       if(v<100)
+       {
+       document.querySelector(`.progress${i}`).style.width = `${v}%`;
+       document.querySelector(`.progress${i}`).classList.remove("green");
+       }
+       else{
+        document.querySelector(`.progress${i}`).classList.add("green");
+        document.querySelector(`.progress${i}`).style.width = `100%`;
+       }
+
+      }
+
+       document.querySelector('.day').classList.remove('bright');
+      document.querySelector('.week').classList.remove('bright');
+      document.querySelector('.month').classList.add('bright');
+      status = 'month';
+    }
+  }
+  
+    </script>
+  </body>
+</html>
